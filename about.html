@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ShopCart</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f5f7f5;
+            color: #000000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .taskbar {
+            height: 64px;
+            background: #ffffff;
+            border-bottom: 1px solid #e0e6e2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #9dbb9c; 
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: #000000;
+            stroke-width: 2;
+        }
+        .nav-links nav {
+            display: flex; gap: 32px;
+        }
+        .nav-links a {
+            text-decoration: none; color: #565959; font-weight: 500; font-size: 15px; transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #000000;
+        }
+        .content {
+            margin: 120px auto 40px;
+            padding: 60px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e0e6e2;
+            max-width: 800px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #000000;
+        }
+        p {
+            font-size: 18px;
+            color: #6b7280;
+            line-height: 1.8;
+            margin: 0 auto;
+            max-width: 700px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #839d89;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #718a77;
+        }
+    </style>
+</head>
+<body>
+    <header class="taskbar">
+        <a href="landing.html" class="logo" style="text-decoration: none;">
+            <div class="logo-icon">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 4h12M5 4V3a1 1 0 011-1h6a1 1 0 011 1v1M3 4l1.5 9h9L15 4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="7" cy="15" r="1" fill="#000000" stroke="none"/><circle cx="11" cy="15" r="1" fill="#000000" stroke="none"/>
+                </svg>
+            </div>
+        </a>
+        <div class="nav-links" style="flex:1; display:flex; justify-content:center;">
+            <nav style="display:flex; gap: 32px;">
+                <a href="index.html">Shop</a>
+                <a href="about.html" style="color:#000000;">About</a>
+            </nav>
+        </div>
+        <div style="width: 32px;"></div> <!-- placeholder to center nav properly -->
+    </header>
+
+    <div class="content">
+        <h1>About ShopCart</h1>
+        <p>The modern, enterprise-grade marketplace. Discover high-quality tools tailored for the modern workforce. Designed for speed, scale, and uncompromising aesthetic excellence.</p>
+        <a href="landing.html" class="back-link">← Return to Home</a>
+    </div>
+</body>
+</html>

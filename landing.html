@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopCart — Enterprise Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f3f4f6;
+            color: #000000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .taskbar {
+            height: 64px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #0f1111;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #9dbb9c; /* Sage green icon block */
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: #0f1111;
+            stroke-width: 2;
+        }
+
+        .nav-links nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #565959;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #0f1111;
+        }
+
+        .btn-enter {
+            background: #839d89; /* Sage Green */
+            color: #ffffff;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-enter:hover {
+            background: #718a77;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+
+        .hero {
+            margin-top: 64px;
+            flex: 1;
+            position: relative;
+            background: url("assets/landing_bg_1776276684241.png") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 10;
+            background: rgba(255,255,255,0.85);
+            padding: 60px 80px;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            max-width: 700px;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: #0f1111;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #565959;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #9dbb9c; /* Lighter Sage Green */
+            color: #000000;
+            border: 1px solid #8ba98a;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .hero-cta:hover {
+            background: #8ba98a;
+            border-color: #839d89;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .account-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .account-btn {
+            text-decoration: none; 
+            color: #000000; 
+            font-weight: 500; 
+            font-size: 15px;
+            padding: 10px 0;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background-color: #ffffff;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 200;
+            border: 1px solid #e0e6e2;
+        }
+        .dropdown-content a {
+            color: #000000;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            text-align: left;
+        }
+        .dropdown-content a:not(:last-child) {
+            border-bottom: 1px solid #f5f7f5;
+        }
+        .dropdown-content a:hover {
+            background-color: #f5f7f5;
+        }
+        .account-dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="taskbar">
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 4h12M5 4V3a1 1 0 011-1h6a1 1 0 011 1v1M3 4l1.5 9h9L15 4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="7" cy="15" r="1" fill="#000000" stroke="none"/><circle cx="11" cy="15" r="1" fill="#000000" stroke="none"/>
+                </svg>
+            </div>
+        </div>
+        <div class="nav-links" style="flex:1; display:flex; justify-content:center;">
+            <nav style="display:flex; gap: 32px;">
+                <a href="index.html">Shop</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+        <div class="account-dropdown">
+            <a href="#" class="account-btn">Account ▾</a>
+            <div class="dropdown-content">
+                <a href="#">Arshi Garg</a>
+                <a href="#">Nithyashree Hebbar</a>
+                <a href="#">Shreya Jain</a>
+                <a href="#">Taneesha Rajiv</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" style="background: url('assets/landing_bg_1776276684241.png') center/cover no-repeat; height: calc(100vh - 64px);">
+        <div class="hero-overlay" style="background: rgba(0,0,0,0.3);"></div>
+        <div class="hero-content" style="background:transparent; box-shadow:none; backdrop-filter:none;">
+            <h1 class="hero-title" style="color: #ffffff; font-size: 96px; text-shadow: 0 4px 12px rgba(0,0,0,0.2);">ShopCart</h1>
+        </div>
+    </section>
+
+</body>
+</html>

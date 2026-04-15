@@ -3,9 +3,8 @@ from flask_cors import CORS
 import psycopg2
 import psycopg2.extras
 from datetime import datetime
+from flask import send_from_directory
 
-app = Flask(__name__)
-CORS(app)
 
 DB_CONFIG = {
     'host':     'localhost',
@@ -34,9 +33,20 @@ def execute(sql, params=()):
     conn.commit(); cur.close(); conn.close()
     return last_id
 
+app = Flask(__name__)
+CORS(app)
+
 @app.route('/')
 def index():
     return jsonify({'status': 'ok'})
+
+@app.route('/index.html')
+def serve_index():
+    return send_from_directory('.', 'index.html')
+
+@app.route('/landing.html')
+def serve_landing():
+    return send_from_directory('.', 'landing.html')
 
 @app.route('/customers')
 def get_customers():
